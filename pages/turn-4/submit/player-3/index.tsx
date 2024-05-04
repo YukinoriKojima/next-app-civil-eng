@@ -292,7 +292,7 @@ export default function SettingName() {
                     </div><br />
                     <div>
                         {(isSubmitted==1) ? <button onClick={NextButtonHandler} 
-                        className={styles.btn}>次へ進む</button> : ""}
+                        className={styles.btn}>次へ進む<br/>(最終結果画面に移動します。)</button> : ""}
                     </div>
 
                 </div>

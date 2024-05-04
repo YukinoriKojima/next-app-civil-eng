@@ -170,7 +170,7 @@ export default function SettingName() {
         })
         const canGoNext: number = Number(data.data);
         if(canGoNext!=0){
-            window.location.href = '../result/player-4';
+            window.location.href = '../../final-result';
         }
         else{"集計をお待ち下さい"}
 
@@ -296,7 +296,7 @@ export default function SettingName() {
                     </div><br />
                     <div>
                         {(isSubmitted == 1) ? <button onClick={NextButtonHandler}
-                            className={styles.btn}>次へ進む</button> : ""}
+                            className={styles.btn}>次へ進む<br/>(最終結果画面に移動します。)</button> : ""}
                     </div>
 
                 </div >

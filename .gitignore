@@ -34,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+auth/spreadsheets/civil-eng-yukinori-5d79ea1cd247.json
+confidencial.json
+images/hammer.jpg
+images/regional_point-07.png

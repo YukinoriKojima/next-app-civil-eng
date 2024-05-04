@@ -1,4 +1,4 @@
-import styles from "../styles/Home.module.css"
+import styles from "../../../styles/Home.module.css"
 import Link from "next/link"
 import { MouseEventHandler } from "react";
 import axios from 'axios';
@@ -12,13 +12,35 @@ const bulkGetApiUrl = String(process.env.NEXT_PUBLIC_BULK_GET_API_URL);
 const bulkSetApiUrl = String(process.env.NEXT_PUBLIC_BULK_SET_API_URL);
 const getApiUrl = String(process.env.NEXT_PUBLIC_GET_API_URL);
 
-
-  
-
 export default function Start() {
 
 
     const startGame: MouseEventHandler<HTMLButtonElement> = async (event) => {
+
+        const now = String(new Date());
+
+        try {
+            alert("開始するとプレイヤーがプレイヤー選択画面に進めるようになります．よろしいですか？")
+            const createData = await axios.get(createApiUrl, {
+                params: {
+                    sheetName: now,
+                }
+            });
+            const setData = await axios.get(setApiUrl, {
+                params: {
+                    sheetName: 'currentGame',
+                    cellId: 'A1',
+                    value: now }}
+            );
+            const setGoNext = await axios.get(setApiUrl, {
+                params: {
+                    sheetName: now,
+                    cellId: 'A17',
+                    value: "1" }}
+            );
+        } catch (error) {
+            alert("Fool You !");
+        }
 
         // try {
         //     alert('trying');
@@ -34,17 +56,13 @@ export default function Start() {
         <div className={styles.container}>
             <p className={styles.btmg5}>　</p>
             <div className={styles.main}>
-
                 <div className={styles.pagetitlebox}>
                     <div className={styles.pagetitle}>
                     <h1>入札<br />シミュレーションゲーム</h1>
                     </div>
                 </div>
                 <br/>
-                <p className={styles.normaltextcenter}>みなさんには架空の建設会社を設立、なるべく多くの利益の獲得を目指して、<br/>建設事業20件の入札に挑戦していただきます。<br/>
-                競合する他社の動向を予想しながら、事業の落札・利益の獲得を目指しましょう。<br/>目指すは建設業界No.1！</p>
-                <br/>
-                <Link href = "player-select">
+                <Link href = "result-1">
                 <button className={styles.btn} type="button" onClick={startGame}><div className={styles.large}>Game Start!</div></button>
                 </Link>
             </div>

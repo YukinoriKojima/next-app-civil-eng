@@ -1,0 +1,10 @@
+export const minRate:number = 1.2;
+export const maxRate:number = 1.9;
+export const cost1:number[] = [1,100,346,30,20];
+export const cost2:number[] = [800,200,600,100,400];
+export const cost3:number[] = [1000,500,1000,300,2000];
+export const cost4:number[] = [400,500,700,400,1500];
+export const bidCost1:number[] = [0.1,10.0,34.6,3.0,2.0];
+export const bidCost2:number[] = [80,20,60,10,40];
+export const bidCost3:number[] = [100,50,100,30,200];
+export const bidCost4:number[] = [40,50,70,40,150];

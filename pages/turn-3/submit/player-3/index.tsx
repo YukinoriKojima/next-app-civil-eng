@@ -8,6 +8,9 @@ import styles from "../../../../styles/Home.module.css"
 import Select from 'react-select'
 import Link from "next/link";
 import { json } from "react-router-dom";
+import LocalImage from "../../../../images/regional_point-07.png"
+import Image from "next/image";
+import { useEffect } from "react";
 
 const initialName: string = "Unknown";
 
@@ -111,18 +114,44 @@ export default function SettingName() {
         [prop: string]: any // これを記述することで、どんなプロパティでも持てるようになる
     }
 
+    const [area, setArea] = useState(["", "", "", ""])
+    useEffect(
+        () => {
+            const setting = async () => {
+                const sheetNameData = await axios.get(getApiUrl, {
+                    params: {
+                        crossDomein: true,
+                        sheetName: 'currentGame',
+                        cellId: 'A1',
+                    }
+                });
+                var gameName: string = sheetNameData.data
+                setSheetName(gameName);
+
+                const bulkArea = await axios.get(bulkGetApiUrl, {
+                    params: {
+                        crossDomein: true,
+                        sheetName: gameName,
+                        numRow: 4,
+                        numCol: 1,
+                        startRow: 2,
+                        startCol: 2
+                    }
+                })
+                var areaData = bulkArea.data;
+                var tmpArea:string[] = ["","","",""];
+                for(let row=0; row<4; row++){
+                    tmpArea[row] = areaData[`row${row}`]["col0"];
+                }
+                setArea(tmpArea);
+            }
+            setting();
+        }, []
+    )
+
     const ConfirmButtonHandler: MouseEventHandler<HTMLButtonElement> = async () => {
         var res = confirm("入札額は変更できません。本当によろしいですか？")
         if (res == true) {
-            const sheetNameData = await axios.get(getApiUrl, {
-                params: {
-                    crossDomein: true,
-                    sheetName: 'currentGame',
-                    cellId: 'A1',
-                }
-            });
-            var gameName: string = sheetNameData.data;
-            setSheetName(gameName);
 
 
             var startRow: number = 2;
@@ -144,7 +173,7 @@ export default function SettingName() {
             const bulk = await axios.get(bulkSetApiUrl, {
                 params: {
                     crossDomein: true,
-                    sheetName: gameName,
+                    sheetName: sheetName,
                     numRow: 1,
                     numCol: 5,
                     startRow: 4,
@@ -182,7 +211,21 @@ export default function SettingName() {
             <p className={styles.btmg5}>　</p>
                 <div className={styles.main}>
                     <div className={styles.pagetitlebox}><h1>Player 3<br />工事11~15入札</h1></div>
-
+                    <br/><center><Image src={LocalImage}  alt="地域ポイント"/></center><br />
+                    
+                    <table className={styles.table}>
+                        <thead className={styles.tablehead}>
+                            <tr className={styles.tablehead}>
+                                <th>Player1</th><th>Player2</th><th>Player3</th><th>Player4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className={styles.cell}>
+                                <td className={styles.cell}>{area[0]}</td><td className={styles.cell}>{area[1]}</td><td className={styles.cell}>{area[2]}</td><td className={styles.cell}>{area[3]}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
                     <form>
                         <div className={styles.contents}>
 

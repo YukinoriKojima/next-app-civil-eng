@@ -28,10 +28,9 @@ export async function sendInquiry(data: FormData) {
     typeof clientEmail === "undefined" ||
     typeof privateKey === "undefined"
   ) {
-    console.error(
+    throw new Error(
       'env "SHEET_ID", "GOOGLE_SERVICE_ACCOUNT_EMAIL", "GOOGLE_PRIVATE_KEY" are required.',
     );
-    process.exit(1);
   }
 
   const doc = new GoogleSpreadsheet(sheetId, jwt);

@@ -158,7 +158,7 @@ export default function SettingName() {
 
             window.location.href = "../player-name/player-2"
         } else {
-            alert('ばーーか！')
+            alert("入札してください")
         }
     }
 

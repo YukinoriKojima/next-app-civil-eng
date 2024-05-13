@@ -96,8 +96,7 @@ export default function Start() {
 
     const tmpTotalButton: MouseEventHandler<HTMLButtonElement> = async () => {
         isLoading.current = 1;
-
-
+        
         const bulk = await axios.get(bulkGetApiUrl, {
             params: {
                 crossDomein: true,

@@ -156,7 +156,7 @@ export default function SettingName() {
 
             alert("入札が無事に終了しました。結果発表をお待ち下さい。")
         } else {
-            alert('ばーーか！')
+            alert("入札してください")
         }
     }
 

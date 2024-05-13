@@ -1,223 +1,228 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700');
-@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
-.container{
-    font-family: "Zen Maru Gothic", serif;
-    font-weight:200;
-    position: relative;
-    background-color: white;
-    color: #2a2b2b;
-    margin: auto;
-    align-items: center;
-    text-align: center;
-    background:linear-gradient(to top, rgba(112,96,80, 0.8) 0%, rgba(112,96,80, 0.5) 100%), url(https://user0514.cdnw.net/shared/img/thumb/domain458A0429_TP_V.jpg) no-repeat center center;  /* 背景画像指定 */
-    background-size: cover;
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:700");
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap");
+.container {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 200;
+  position: relative;
+  background-color: white;
+  color: #2a2b2b;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  background:
+    linear-gradient(
+      to top,
+      rgba(112, 96, 80, 0.8) 0%,
+      rgba(112, 96, 80, 0.5) 100%
+    ),
+    url(https://user0514.cdnw.net/shared/img/thumb/domain458A0429_TP_V.jpg)
+      no-repeat center center; /* 背景画像指定 */
+  background-size: cover;
 }
 
 .main {
-    /* background: url('image/bg.jpg') no-repeat center center; */
-    text-align:  center;
-    height: auto;
-    width:70%;
-    background-size: cover;
-    font-size: 2.78vw;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 50px;
-    background-color: rgba(255,255,255,0.8);
-    border-radius: 15px;
+  /* background: url('image/bg.jpg') no-repeat center center; */
+  text-align: center;
+  height: auto;
+  width: 70%;
+  background-size: cover;
+  font-size: 2.78vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
 }
 
-.pagetitlebox{
-    font-family: "Zen Maru Gothic", serif;
-    font-weight: 600;
-    font-style: normal;
-    text-transform: uppercase;
-    font-size : 7vw;
-    height: 300px;
-    text-align: center;
-    vertical-align: middle;
-    width: 100%;
-    text-align: center;
-    background-size: cover;
-    color:#706050;
-    display: table;
+.pagetitlebox {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 600;
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 7vw;
+  height: 300px;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  text-align: center;
+  background-size: cover;
+  color: #706050;
+  display: table;
 }
 
-.tablebox{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    background-color: rgba(98,121,50, 0.8);
-    border-radius: 20px;
+.tablebox {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: rgba(98, 121, 50, 0.8);
+  border-radius: 20px;
 }
 
-.table{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    color:#fff;
+.table {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
 }
 
-.first{
-    color: gold;
-    font-size: 4vw;
+.first {
+  color: gold;
+  font-size: 4vw;
 }
 
-.second{
-    color: silver;
-    font-size: 3.3vw;
+.second {
+  color: silver;
+  font-size: 3.3vw;
 }
 
-.third{
-    color: #b87333;
-    font-size: 3.0vw;
+.third {
+  color: #b87333;
+  font-size: 3vw;
 }
 
 .tpmg5 {
-    margin-top: 5em;
+  margin-top: 5em;
 }
 
 .btmg5 {
-    margin-bottom: 5em;
+  margin-bottom: 5em;
 }
-
 
 .cell {
-    border:1px solid #706050;
-    width: auto;
-    height: auto;
-    padding: 10px;
-    vertical-align: top;
-    text-align: center;
-    color:#706050;
+  border: 1px solid #706050;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  vertical-align: top;
+  text-align: center;
+  color: #706050;
 }
 
-.tablehead{
-    background-color: #706050;
-    color:white
+.tablehead {
+  background-color: #706050;
+  color: white;
 }
 
-.pulldown{
-    width:250px;
-    margin-left: auto;
-    margin-right: auto;
+.pulldown {
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.pagetitle{
-    display: flex;
-    justify-content: center;
-    vertical-align: middle;
-}
-
-.large{
-    font-size: 80px;
+.pagetitle {
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
 }
 
-.textarea{
-    border:1px solid #706050;
+.large {
+  font-size: 80px;
 }
 
-.btn{
-    padding: 10px 25px;
-    width : 90%;
-    height: 150px;
-    text-align: center;
-    background-color: #706050;
-    color: #fff;
-    border-radius: 15px;
-    font-size: auto;
-    cursor: pointer;
-    box-shadow: 0 5px 0 #493a2c; /* 影の太さ・色 */
+.textarea {
+  border: 1px solid #706050;
 }
 
-
-.btn:hover{
-    background-color: #627932;
-    box-shadow: none;
-    transform: translateY(5px);
+.btn {
+  padding: 10px 25px;
+  width: 90%;
+  height: 150px;
+  text-align: center;
+  background-color: #706050;
+  color: #fff;
+  border-radius: 15px;
+  font-size: auto;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #493a2c; /* 影の太さ・色 */
 }
 
-.btn:active{
-    background-color: #627932;
-    box-shadow: none;
-    transform: translateY(5px);
+.btn:hover {
+  background-color: #627932;
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
+.btn:active {
+  background-color: #627932;
+  box-shadow: none;
+  transform: translateY(5px);
 }
 
 .contents {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 100%;
-    margin: 10px 0;
-    padding-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  margin: 10px 0;
+  padding-top: 0;
 }
 
 .item {
-    width: 50%;
-    margin-bottom: 5px;
-    padding: 50px 10px;
-    text-align: center;
-    font-size: 60px;
+  width: 50%;
+  margin-bottom: 5px;
+  padding: 50px 10px;
+  text-align: center;
+  font-size: 60px;
 }
 
 .biddings {
-    width: 45%;
-    margin: 2px;
-    font-size: 30px;
-    background-color: rgba(112,96,80, 0.8);
-    border-radius: 10px;
-    color: white;
-    padding: 5px;
+  width: 45%;
+  margin: 2px;
+  font-size: 30px;
+  background-color: rgba(112, 96, 80, 0.8);
+  border-radius: 10px;
+  color: white;
+  padding: 5px;
 }
 
-.textarea4bid{
-    width: 90%;
-    color:#706050;
+.textarea4bid {
+  width: 90%;
+  color: #706050;
 }
 
-.normaltextcenter{
-    font-weight: 400;
-    font-size:1.5vw;
-    text-align: center;
-    color: #2a2b2b;
+.normaltextcenter {
+  font-weight: 400;
+  font-size: 1.5vw;
+  text-align: center;
+  color: #2a2b2b;
 }
 
-.normaltextleft{
-    font-weight: 400;
-    font-size:1.5vw;
-    text-align: left;
-    color: #2a2b2b;
+.normaltextleft {
+  font-weight: 400;
+  font-size: 1.5vw;
+  text-align: left;
+  color: #2a2b2b;
 }
 .loaderbg {
-    display: flex;
-    position: absolute;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(255, 255, 255);
-    opacity: 0.6;
-    z-index: 300;
-    text-align: center;
-    align-content: center;
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255);
+  opacity: 0.6;
+  z-index: 300;
+  text-align: center;
+  align-content: center;
 }
 
-.loadingfig{
-    align-content: center;
-    z-index: 500;
-    width: 10%;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%)
-               translateY(-50%);
-    border: #2a2b2b;
+.loadingfig {
+  align-content: center;
+  z-index: 500;
+  width: 10%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border: #2a2b2b;
 }
 
-
-.child{
-    margin: 0 auto;  
+.child {
+  margin: 0 auto;
 }

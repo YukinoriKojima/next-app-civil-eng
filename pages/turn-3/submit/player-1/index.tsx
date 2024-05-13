@@ -21,6 +21,20 @@ const bulkSetApiUrl = String(process.env.NEXT_PUBLIC_BULK_SET_API_URL);
 const getApiUrl = String(process.env.NEXT_PUBLIC_GET_API_URL);
 
 export default function SettingName() {
+    const area2area = (alphaArea:string) =>{
+        if(alphaArea=="south"){
+            return "西日本"
+        }
+        else if(alphaArea=="mid"){
+            return "中日本"
+        }
+        else if(alphaArea=='north'){
+            return "北日本"
+        }
+        else{
+            return "選択なし"
+        }
+    }
     const pattern: RegExp = /^\d*\.?\d*$/;
     const [name, setName] = useState()
     const [answer1, setAnswer1] = useState("");
@@ -219,8 +233,9 @@ export default function SettingName() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className={styles.cell}>
-                                <td className={styles.cell}>{area[0]}</td><td className={styles.cell}>{area[1]}</td><td className={styles.cell}>{area[2]}</td><td className={styles.cell}>{area[3]}</td>
+                        <tr className={styles.cell}>
+                                <td className={styles.cell}>{area2area(area[0])}</td><td className={styles.cell}>{area2area(area[1])}</td>
+                                <td className={styles.cell}>{area2area(area[2])}</td><td className={styles.cell}>{area2area(area[3])}</td>
                             </tr>
                         </tbody>
                     </table>

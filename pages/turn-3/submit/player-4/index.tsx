@@ -30,8 +30,11 @@ export default function SettingName() {
         else if(alphaArea=="mid"){
             return "中日本"
         }
-        else{
+        else if(alphaArea=='north'){
             return "北日本"
+        }
+        else{
+            return "選択なし"
         }
     }
     const pattern: RegExp = /^\d*\.?\d*$/;

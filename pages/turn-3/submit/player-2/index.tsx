@@ -21,6 +21,20 @@ const bulkSetApiUrl = String(process.env.NEXT_PUBLIC_BULK_SET_API_URL);
 const getApiUrl = String(process.env.NEXT_PUBLIC_GET_API_URL);
 
 export default function SettingName() {
+    const area2area = (alphaArea:string) =>{
+        if(alphaArea=="south"){
+            return "西日本"
+        }
+        else if(alphaArea=="mid"){
+            return "中日本"
+        }
+        else if(alphaArea=='north'){
+            return "北日本"
+        }
+        else{
+            return "選択なし"
+        }
+    }
     const pattern: RegExp = /^\d*\.?\d*$/;
     const [name, setName] = useState()
     const [answer1, setAnswer1] = useState("");
@@ -139,8 +153,8 @@ export default function SettingName() {
                     }
                 })
                 var areaData = bulkArea.data;
-                var tmpArea:string[] = ["","","",""];
-                for(let row=0; row<4; row++){
+                var tmpArea: string[] = ["", "", "", ""];
+                for (let row = 0; row < 4; row++) {
                     tmpArea[row] = areaData[`row${row}`]["col0"];
                 }
                 setArea(tmpArea);
@@ -158,13 +172,13 @@ export default function SettingName() {
             var values: string[][] = [
                 [answer1, answer2, answer3, answer4, answer5]
             ]
-            var jsonValues:Obj = {};
+            var jsonValues: Obj = {};
             var isAnswers = [isAnswer1, isAnswer2, isAnswer3, isAnswer4, isAnswer5];
             for (let i = 0; i < values.length; i++) {
                 jsonValues[`row${i}`] = {}
                 for (let j = 0; j < values[0].length; j++) {
                     jsonValues[`row${i}`][`col${j}`] = values[i][j];
-                    if(isAnswers[j] == 0){
+                    if (isAnswers[j] == 0) {
                         jsonValues[`row${i}`][`col${j}`] = -9999;
                     }
                 }
@@ -184,13 +198,12 @@ export default function SettingName() {
 
             alert("入札が無事に終了しました。結果発表をお待ち下さい。")
 
-            window.location.href = "../player-name/player-2"
         } else {
             alert("入札してください")
         }
     }
 
-    const NextButtonHandler : MouseEventHandler<HTMLButtonElement> = async() => {
+    const NextButtonHandler: MouseEventHandler<HTMLButtonElement> = async () => {
         const data = await axios.get(getApiUrl, {
             params: {
                 crossDomein: true,
@@ -199,20 +212,20 @@ export default function SettingName() {
             }
         })
         const canGoNext: number = Number(data.data);
-        if(canGoNext!=0){
+        if (canGoNext != 0) {
             window.location.href = '../result/player-2';
         }
-        else{"集計をお待ち下さい"}
+        else { "集計をお待ち下さい" }
     }
 
     return (
         <>
             <div className={styles.container}>
-            <p className={styles.btmg5}>　</p>
+                <p className={styles.btmg5}>　</p>
                 <div className={styles.main}>
                     <div className={styles.pagetitlebox}><h1>Player 1<br />工事11~15入札</h1></div>
-                    <br/><center><Image src={LocalImage}  alt="地域ポイント"/></center><br />
-                    
+                    <br /><center><Image src={LocalImage} alt="地域ポイント" /></center><br />
+
                     <table className={styles.table}>
                         <thead className={styles.tablehead}>
                             <tr className={styles.tablehead}>
@@ -221,15 +234,16 @@ export default function SettingName() {
                         </thead>
                         <tbody>
                             <tr className={styles.cell}>
-                                <td className={styles.cell}>{area[0]}</td><td className={styles.cell}>{area[1]}</td><td className={styles.cell}>{area[2]}</td><td className={styles.cell}>{area[3]}</td>
+                                <td className={styles.cell}>{area2area(area[0])}</td><td className={styles.cell}>{area2area(area[1])}</td>
+                                <td className={styles.cell}>{area2area(area[2])}</td><td className={styles.cell}>{area2area(area[3])}</td>
                             </tr>
                         </tbody>
                     </table>
-                    
+
                     <form>
                         <div className={styles.contents}>
 
-                        <div className={styles.biddings}>
+                            <div className={styles.biddings}>
                                 事業11：地下鉄七隈線延伸工事<br />
                                 場所：西日本<br />
                                 工事費：1000億円<br />

@@ -56,7 +56,7 @@ export default function Start() {
                 numRow: 4,
                 numCol: 5,
                 startRow: 2,
-                startCol: 3
+                startCol: 8
             }
         });
         for (let i = 0; i < 4; i++) {

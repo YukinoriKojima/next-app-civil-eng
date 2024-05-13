@@ -238,17 +238,17 @@ export default function Start() {
                 </div> : ""}
                 <main className={styles.main}>
                     <div className={styles.pagetitlebox}>
-                        <h1>入札1~5<br />結果発表<br/>管理者用画面</h1>
+                        <h1>入札16~20<br />結果発表<br/>管理者用画面</h1>
                     </div>
 
                         <table className={styles.table}>
                             <thead>
                                 <tr className={styles.tablehead}><th></th>
-                                    <th>工事1</th>
-                                    <th>工事2</th>
-                                    <th>工事3</th>
-                                    <th>工事4</th>
-                                    <th>工事5</th>
+                                    <th>工事16</th>
+                                    <th>工事17</th>
+                                    <th>工事18</th>
+                                    <th>工事19</th>
+                                    <th>工事20</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -279,7 +279,7 @@ export default function Start() {
                             </tbody>
                         </table><br />
 
-                    <button onClick={bidResultButton} className={styles.btn}>結果を表示する</button><br /><br />
+                    <button onClick={bidResultButton} className={styles.btn}>結果を生成する</button><br /><br />
                     {(firm == 1) ? <button onClick={tmpTotalButton} className={styles.btn}>結果を確定し，暫定の利益額を表示する</button> : ""}<br/>
                     {(benefitDisplay == 1) ?
                         <table className={styles.table}>

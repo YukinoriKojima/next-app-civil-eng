@@ -66,8 +66,8 @@ export default function Start() {
         },
         "mid": {
             "north":2,
-            "mid":3,
-            "west":1
+            "mid":2,
+            "west":2
         },
         "west": {
             "north":1,
@@ -82,6 +82,7 @@ export default function Start() {
     interface Obj {
         [prop: string]: any // これを記述することで、どんなプロパティでも持てるようになる
     }
+
 
     const bidResultButton: MouseEventHandler<HTMLButtonElement> = async () => {
         setBid(1);
@@ -117,41 +118,23 @@ export default function Start() {
             }
         }
 
-        const bulkArea = await axios.get(bulkGetApiUrl, {
-            params: {
-                crossDomein: true,
-                sheetName: tmpSheetName,
-                numRow: 4,
-                numCol: 1,
-                startRow: 2,
-                startCol: 2
-            }
-        });
-        const tmpArea = bulkArea.data
-        const tmpAreaList:string[] = [tmpArea['row0']['col0'],tmpArea['row1']['col0'],tmpArea['row2']['col0'],tmpArea['row3']['col0']];
-
         var lowerCost = cost.map(c => c * 1.21);
         var upperCost = cost.map(c => c * 1.87);
         var tmpList: string[] = ["", "", "", "", ""];
-
-        var maxBid = getColumnMaxValues(tmpResults);
-        alert(maxBid)
-
         for (let num = 0; num < 5; num++) {
-            var tmp = 1/30000;
+            var tmp = cost[num] * 3000;
             var tmpWinner: string[] = [];
             for (let player = 0; player < 4; player++) {
                 if (Number(tmpResults[player][num]) <= upperCost[num] && Number(tmpResults[player][num]) >= lowerCost[num]) {
-                    if (tmp < maxBid[num]*10/Number(tmpResults[player][num]) + areaPoint[tmpAreaList[player]][bidArea[num]]) {
+                    if (tmp > Number(tmpResults[player][num])) {
                         tmpWinner = [`player ${player + 1}`];
-                        tmp = maxBid[num]*10/Number(tmpResults[player][num])+areaPoint[tmpAreaList[player]][bidArea[num]];
+                        tmp = Number(tmpResults[player][num]);
                     }
-                    else if (tmp == maxBid[num]*10/Number(tmpResults[player][num])+areaPoint[tmpAreaList[player]][bidArea[num]]) {
+                    else if (tmp == Number(tmpResults[player][num])) {
                         tmpWinner.push(`player ${player + 1}`);
                     }
                 }
             }
-            alert(tmpWinner)
             if (tmpWinner.length == 0) {
                 tmpList[num] = '落札不調'
 
@@ -160,7 +143,6 @@ export default function Start() {
                 tmpList[num] = getRandomElement(tmpWinner);
             }
         }
-
         setWinner(tmpList);
         setFirm(1);
         isLoading.current = 0;
@@ -282,17 +264,17 @@ export default function Start() {
                 </div> : ""}
                 <main className={styles.main}>
                     <div className={styles.pagetitlebox}>
-                        <h1>入札1~5<br />結果発表<br/>管理者用画面</h1>
+                        <h1>入札11~15<br />結果発表3<br/>管理者用画面</h1>
                     </div>
 
                         <table className={styles.table}>
                             <thead>
                                 <tr className={styles.tablehead}><th></th>
-                                    <th>工事1</th>
-                                    <th>工事2</th>
-                                    <th>工事3</th>
-                                    <th>工事4</th>
-                                    <th>工事5</th>
+                                    <th>工事11</th>
+                                    <th>工事12</th>
+                                    <th>工事13</th>
+                                    <th>工事14</th>
+                                    <th>工事15</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -323,7 +305,7 @@ export default function Start() {
                             </tbody>
                         </table><br />
 
-                    <button onClick={bidResultButton} className={styles.btn}>結果を表示する</button><br /><br />
+                    <button onClick={bidResultButton} className={styles.btn}>結果を生成する</button><br /><br />
                     {(firm == 1) ? <button onClick={tmpTotalButton} className={styles.btn}>結果を確定し，暫定の利益額を表示する</button> : ""}<br/>
                     {(benefitDisplay == 1) ?
                         <table className={styles.table}>

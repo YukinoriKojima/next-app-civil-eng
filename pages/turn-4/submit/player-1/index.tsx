@@ -172,7 +172,7 @@ export default function SettingName() {
         if (canGoNext != 0) {
             window.location.href = '../../final-result';
         }
-        else { "集計をお待ち下さい" }
+        else { alert("集計をお待ち下さい") }
 
     }
     return (

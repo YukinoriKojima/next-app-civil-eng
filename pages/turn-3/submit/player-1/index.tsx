@@ -172,7 +172,7 @@ export default function SettingName() {
         if (canGoNext != 0) {
             window.location.href = '../result/player-1';
         }
-        else { "集計をお待ち下さい" }
+        else { alert("集計をお待ち下さい") }
 
     }
     return (

@@ -58,12 +58,12 @@ export default function Start() {
             <div className={styles.main}>
                 <div className={styles.pagetitlebox}>
                     <div className={styles.pagetitle}>
-                    <h1>入札<br />シミュレーションゲーム</h1>
+                    <h1>入札<br />シミュレーションゲーム<br/>管理者画面1</h1>
                     </div>
                 </div>
                 <br/>
                 <Link href = "result-1">
-                <button className={styles.btn} type="button" onClick={startGame}><div className={styles.large}>Game Start!</div></button>
+                <button className={styles.btn} type="button" onClick={startGame}><div className={styles.large}>新規ゲーム作成</div></button>
                 </Link>
             </div>
             <p className={styles.tpmg5}>　</p>

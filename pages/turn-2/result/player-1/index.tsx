@@ -138,7 +138,7 @@ export default function Start() {
                 </div> : ""}
                 <main className={styles.main}>
                     <div className={styles.pagetitlebox}>
-                        <h1>入札1~5<br />結果発表</h1>
+                        <h1>入札6~10<br />結果発表</h1>
                     </div>
 
                     <table className={styles.table}>

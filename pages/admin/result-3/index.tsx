@@ -23,19 +23,18 @@ type dict2D = {
 }
 
 function getColumnMaxValues(twoDimensionalList: string[][]): number[] {
-    const columnMaxValues: number[] = [];
+    var columnMaxValues: number[] = [0,0,0,0,0];
 
     for (let column = 0; column < twoDimensionalList[0].length; column++) {
-        let maxInColumn = Number(twoDimensionalList[0][column]);
+        let maxInColumn = -100;
         for (let row = 1; row < twoDimensionalList.length; row++) {
             const currentValue = Number(twoDimensionalList[row][column]);
-            if (!isNaN(currentValue) && currentValue > maxInColumn) {
+            if ((!isNaN(currentValue)) && currentValue > maxInColumn) {
                 maxInColumn = currentValue;
             }
         }
-        columnMaxValues.push(maxInColumn);
+        columnMaxValues[column] = maxInColumn;
     }
-
     return columnMaxValues;
 }
 
@@ -57,22 +56,22 @@ export default function Start() {
     var cost = cost3;
     var bidCost = bidCost3;
 
-    var bidArea = ["north", "mid", "south", "north", "west"];
+    var bidArea = ["north", "mid", "south", "north", "south"];
     var areaPoint:dict2D = {
         "north": {
             "north":3,
             "mid":2,
-            "west":1
+            "south":1
         },
         "mid": {
             "north":2,
             "mid":2,
-            "west":2
+            "south":2
         },
-        "west": {
+        "south": {
             "north":1,
             "mid":2,
-            "west":3
+            "south":3
         },
     }
 
@@ -118,19 +117,37 @@ export default function Start() {
             }
         }
 
+
+        const bulkArea = await axios.get(bulkGetApiUrl, {
+            params: {
+                crossDomein: true,
+                sheetName: tmpSheetName,
+                numRow: 4,
+                numCol: 1,
+                startRow: 2,
+                startCol: 2
+            }
+        });
+        const tmpArea = bulkArea.data
+        const tmpAreaList:string[] = [tmpArea['row0']['col0'],tmpArea['row1']['col0'],tmpArea['row2']['col0'],tmpArea['row3']['col0']];
+
         var lowerCost = cost.map(c => c * 1.21);
         var upperCost = cost.map(c => c * 1.87);
         var tmpList: string[] = ["", "", "", "", ""];
+
+        var maxBid = getColumnMaxValues(tmpResults);
+
+
         for (let num = 0; num < 5; num++) {
-            var tmp = cost[num] * 3000;
+            var tmp = -1;
             var tmpWinner: string[] = [];
             for (let player = 0; player < 4; player++) {
                 if (Number(tmpResults[player][num]) <= upperCost[num] && Number(tmpResults[player][num]) >= lowerCost[num]) {
-                    if (tmp > Number(tmpResults[player][num])) {
+                    if (tmp < maxBid[num]*10/Number(tmpResults[player][num]) + areaPoint[tmpAreaList[player]][bidArea[num]]) {
                         tmpWinner = [`player ${player + 1}`];
-                        tmp = Number(tmpResults[player][num]);
+                        tmp = maxBid[num]*10/Number(tmpResults[player][num])+areaPoint[tmpAreaList[player]][bidArea[num]];
                     }
-                    else if (tmp == Number(tmpResults[player][num])) {
+                    else if (tmp == maxBid[num]*10/Number(tmpResults[player][num])+areaPoint[tmpAreaList[player]][bidArea[num]]) {
                         tmpWinner.push(`player ${player + 1}`);
                     }
                 }

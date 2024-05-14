@@ -230,9 +230,9 @@ export default function SettingName() {
                             </tr>
                         </tbody><br />
                     </table>:"現在の得点をロード中..."}
-                    <p className={styles.normaltextcenter}>事業16~20は、2番目に低い価格 で入札した会社が落札できます。</p>
+                   <p className={styles.normaltextcenter}>事業16~20は、2番目に低い価格 で入札した会社が落札できます。</p>
 
-                    <form>
+                     <form>
                         <div className={styles.contents}>
 
                             <div className={styles.biddings}>

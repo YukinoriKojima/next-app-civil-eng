@@ -232,7 +232,7 @@ export default function SettingName() {
         if (canGoNext != 0) {
             window.location.href = '../result/player-2';
         }
-        else { "集計をお待ち下さい" }
+        else { alert("集計をお待ち下さい" )}
     }
 
     return (
@@ -240,7 +240,7 @@ export default function SettingName() {
             <div className={styles.container}>
                 <p className={styles.btmg5}>　</p>
                 <div className={styles.main}>
-                    <div className={styles.pagetitlebox}><h1>Player 1<br />工事11~15入札</h1></div>
+                    <div className={styles.pagetitlebox}><h1>Player 2<br />工事11~15入札</h1></div>
                     {currentScore[0]!=""?
                     <table className={styles.table}>
                         <tbody>

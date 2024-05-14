@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState, useRef } from "react";
 import _ from 'lodash';
 import { Audio, BallTriangle, ThreeDots } from 'react-loader-spinner'
+import { cost3 } from "@/constant/constant";
 
 const createApiUrl = String(process.env.NEXT_PUBLIC_CREATE_API_URL);
 const setApiUrl = String(process.env.NEXT_PUBLIC_SET_API_URL);
@@ -32,6 +33,12 @@ export default function Start() {
     const [Winner, setWinner] = useState(["", "", "", "", ""]);
     const thisTurn = 3;
 
+    const place = 0.0001;
+    function roundDecimal(value: number) {
+        const x = 1 / place
+        return Math.round(value * x) / x
+    }
+
     interface Obj {
         [prop: string]: any // これを記述することで、どんなプロパティでも持てるようになる
     }
@@ -55,7 +62,7 @@ export default function Start() {
                 numRow: 4,
                 numCol: 5,
                 startRow: 2,
-                startCol: 5*thisTurn-2
+                startCol: 5 * thisTurn - 2
             }
         });
         for (let i = 0; i < 4; i++) {
@@ -81,7 +88,7 @@ export default function Start() {
                 numRow: 1,
                 numCol: 5,
                 startRow: 6,
-                startCol: 5*thisTurn-2
+                startCol: 5 * thisTurn - 2
             }
         });
         var tmpWinner = [...Winner];
@@ -104,7 +111,7 @@ export default function Start() {
                 numRow: 4,
                 numCol: 1,
                 startRow: 12,
-                startCol: thisTurn+2
+                startCol: thisTurn + 2
             }
         });
         var tmpCurrentScore = [...currentScore];
@@ -117,7 +124,7 @@ export default function Start() {
     }
 
     const GoNextBid: MouseEventHandler<HTMLButtonElement> = async () => {
-        window.location.href = `../../../turn-${thisTurn+1}/submit/player-1`
+        window.location.href = `../../../turn-${thisTurn + 1}/submit/player-1`
     }
 
     return (
@@ -151,6 +158,10 @@ export default function Start() {
                             </tr>
                         </thead>
                         <tbody>
+                            <tr className={styles.cell}>
+                                <td className={styles.cell}>工事原価</td>
+                                {cost3.map((m, index) => (<td className={styles.cell} key={index}>{m}</td>))}
+                            </tr>
                             <tr className={styles.cell}>
                                 <td className={styles.cell}>Player 1</td>
                                 {bid == 1 ? results[0].map((m, index) => (<td className={styles.cell} key={index}>{m}</td>)) : empty.map((m, index) => (<td width="200px" className={styles.cell} key={index}>{m}</td>))

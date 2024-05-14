@@ -185,7 +185,7 @@ export default function SettingName() {
                     <form>
                         <div className={styles.contents}>
                         <div className={styles.biddings}>
-                                事業1：DMTC本部耐震工事<br />
+                                事業1：五月祭本部耐震工事<br />
                                 工事費：1億円<br />
                                 入札経費：0.1億円<br />
                                 あなたの入札額：{answer1}億円<br />
@@ -203,7 +203,7 @@ export default function SettingName() {
                                 工事1に入札しない
                             </div>
                             <div className={styles.biddings}>
-                                事業2：神武橋補修工事<br />
+                                事業2：コンクリ研専用棟建設工事<br />
                                 工事費：100億円<br />
                                 入札経費：10億円<br />
                                 あなたの入札額：{answer2}億円<br />
@@ -241,7 +241,7 @@ export default function SettingName() {
                                 工事3に入札しない
                             </div>
                             <div className={styles.biddings}>
-                                事業4：モール通り円形歩道整備<br />
+                                事業4：ハチ公拡大事業<br />
                                 工事費：30億円<br />
                                 入札経費：3億円<br />
                                 あなたの入札額：{answer4}億円<br />

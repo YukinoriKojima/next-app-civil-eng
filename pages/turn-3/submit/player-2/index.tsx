@@ -129,6 +129,7 @@ export default function SettingName() {
     }
 
     const [area, setArea] = useState(["", "", "", ""])
+    const [currentScore, setCurrentScore] = useState(["","","",""])
     useEffect(
         () => {
             const setting = async () => {
@@ -153,11 +154,27 @@ export default function SettingName() {
                     }
                 })
                 var areaData = bulkArea.data;
-                var tmpArea: string[] = ["", "", "", ""];
-                for (let row = 0; row < 4; row++) {
+                var tmpArea:string[] = ["","","",""];
+                for(let row=0; row<4; row++){
                     tmpArea[row] = areaData[`row${row}`]["col0"];
                 }
                 setArea(tmpArea);
+                const bulkCurrent = await axios.get(bulkGetApiUrl, {
+                    params: {
+                        crossDomein: true,
+                        sheetName: gameName,
+                        numRow: 4,
+                        numCol: 1,
+                        startRow: 12,
+                        startCol: 4
+                    }
+                })
+                var currentData =bulkCurrent.data;
+                var tmpCurrent:string[] = ["","","",""];
+                for(let row=0; row<4; row++){
+                    tmpCurrent[row] = currentData[`row${row}`]["col0"];
+                }
+                setCurrentScore(tmpCurrent);
             }
             setting();
         }, []
@@ -224,6 +241,20 @@ export default function SettingName() {
                 <p className={styles.btmg5}>　</p>
                 <div className={styles.main}>
                     <div className={styles.pagetitlebox}><h1>Player 1<br />工事11~15入札</h1></div>
+                    {currentScore[0]!=""?
+                    <table className={styles.table}>
+                        <tbody>
+                            <tr className={styles.tablehead}>
+                                <td width="200px">Player 1</td>
+                                <td width="200px">Player 2</td>
+                                <td width="200px">Player 3</td>
+                                <td width="200px">Player 4</td>
+                            </tr>
+                            <tr>
+                                {currentScore.map((m, index) => (<td className={styles.cell} key={index}>{m}</td>))}
+                            </tr>
+                        </tbody><br />
+                    </table>:"現在の得点をロード中..."}
                     <br /><center><Image src={LocalImage} alt="地域ポイント" /></center><br />
 
                     <table className={styles.table}>
@@ -239,6 +270,7 @@ export default function SettingName() {
                             </tr>
                         </tbody>
                     </table>
+
 
                     <form>
                         <div className={styles.contents}>
@@ -263,7 +295,7 @@ export default function SettingName() {
                                 工事1に入札しない
                             </div>
                             <div className={styles.biddings}>
-                                事業12：リニア迂回工事<br />
+                                事業12：沖ノ鳥島護岸工事<br />
                                 場所：北日本<br />
                                 工事費：500億円<br />
                                 入札経費：50億円<br />
@@ -283,7 +315,7 @@ export default function SettingName() {
                                 工事2に入札しない
                             </div>
                             <div className={styles.biddings}>
-                                事業13：札幌ロープウェイ建設工事<br />
+                                事業13：札幌ドーム改修工事<br />
                                 場所：北日本<br />
                                 工事費：1000億円<br />
                                 入札経費：100億円<br />
@@ -303,12 +335,12 @@ export default function SettingName() {
                                 工事3に入札しない
                             </div>
                             <div className={styles.biddings}>
-                                事業14：四国新幹線車両基地建設工事<br />
+                                事業14：リニア迂回工事<br />
                                 場所：西日本<br />
                                 工事費：300億円<br />
                                 入札経費：30億円<br />
                                 あなたの入札額：{answer4}億円<br />
-                                <textarea disabled={isAnswer4 == 0}
+                               <textarea disabled={isAnswer4 == 0}
                                     onChange={handleTextareaChange4}
                                     value={answer4}
                                     className={styles.textarea4bid}
@@ -323,7 +355,7 @@ export default function SettingName() {
                                 工事4に入札しない
                             </div>
                             <div className={styles.biddings}>
-                                事業15：東京大学工学部1号館永久不滅化工事<br />
+                                事業15：皇居直下地下鉄建設工事<br />
                                 場所：中日本<br />
                                 工事費：2000億円<br />
                                 入札経費：200億円<br />
@@ -343,7 +375,7 @@ export default function SettingName() {
                                 工事5に入札しない
                             </div>
                         </div>
-                    </form>
+                    </form>        
                     <div>
                         {((isAnswer1 == 0 || answer1 != "") &&
                             (isAnswer2 == 0 || answer2 != "") &&

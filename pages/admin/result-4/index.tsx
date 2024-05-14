@@ -218,7 +218,7 @@ export default function Start() {
     }
 
     const GoNextBid:MouseEventHandler<HTMLButtonElement> = async()=>{
-        window.location.href = "result-3"
+        window.location.href = "../../final-result"
     }
 
     return (

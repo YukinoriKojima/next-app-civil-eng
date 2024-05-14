@@ -3,7 +3,8 @@ import { MouseEventHandler, useEffect } from "react";
 import axios from 'axios';
 import { useState, useRef } from "react";
 import _ from 'lodash';
-import { Audio, BallTriangle, ThreeDots } from 'react-loader-spinner'
+import { Audio, BallTriangle, ThreeDots } from 'react-loader-spinner';
+import { cost4 } from "@/constant/constant";
 
 const createApiUrl = String(process.env.NEXT_PUBLIC_CREATE_API_URL);
 const setApiUrl = String(process.env.NEXT_PUBLIC_SET_API_URL);
@@ -152,6 +153,10 @@ export default function Start() {
                             </tr>
                         </thead>
                         <tbody>
+                        <tr className={styles.cell}>
+                                <td className={styles.cell}>工事原価</td>
+                                {cost4.map((m, index) => (<td className={styles.cell} key={index}>{m}</td>))}
+                            </tr>
                             <tr className={styles.cell}>
                                 <td className={styles.cell}>Player 1</td>
                                 {bid == 1 ? results[0].map((m, index) => (<td className={styles.cell} key={index}>{m}</td>)) : empty.map((m, index) => (<td width="200px" className={styles.cell} key={index}>{m}</td>))
@@ -185,14 +190,8 @@ export default function Start() {
                     {(benefitDisplay == 1) ?
                         <table className={styles.table}>
                             <tbody>
-                                <tr className={styles.tablehead}>
-                                    <td width="200px">Player 1</td>
-                                    <td width="200px">Player 2</td>
-                                    <td width="200px">Player 3</td>
-                                    <td width="200px">Player 4</td>
-                                </tr>
                                 <tr>
-                                    {currentScore.map((m, index) => (<td className={styles.cell} key={index}>{m}</td>))}
+                                    <td className={styles.cell}>お楽しみに！</td>
                                 </tr>
                             </tbody><br />
                         </table> : ""}

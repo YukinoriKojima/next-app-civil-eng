@@ -8,6 +8,7 @@ import styles from "../../../../styles/Home.module.css"
 import Select from 'react-select'
 import Link from "next/link";
 import { json } from "react-router-dom";
+import { useEffect } from "react";
 
 const initialName: string = "Unknown";
 
@@ -176,17 +177,66 @@ export default function SettingName() {
 
 
     }
+    const [currentScore, setCurrentScore] = useState(["","","",""])
+    useEffect(
+        () => {
+            const setting = async () => {
+                const sheetNameData = await axios.get(getApiUrl, {
+                    params: {
+                        crossDomein: true,
+                        sheetName: 'currentGame',
+                        cellId: 'A1',
+                    }
+                });
+                var gameName: string = sheetNameData.data
+                setSheetName(gameName);
+
+                const bulkArea = await axios.get(bulkGetApiUrl, {
+                    params: {
+                        crossDomein: true,
+                        sheetName: gameName,
+                        numRow: 4,
+                        numCol: 1,
+                        startRow: 12,
+                        startCol: 3
+                    }
+                })
+                var areaData = bulkArea.data;
+                var tmpArea:string[] = ["","","",""];
+                for(let row=0; row<4; row++){
+                    tmpArea[row] = areaData[`row${row}`]["col0"];
+                }
+                setCurrentScore(tmpArea);
+            }
+            setting();
+        }, []
+    )
     return (
         <>
             <div className={styles.container}>
             <p className={styles.btmg5}>　</p>
                 <div className={styles.main}>
                     <div className={styles.pagetitlebox}><h1>Player 4<br />工事6~10入札</h1></div>
+                    {currentScore[0]!=""?
+                    <table className={styles.table}>
+                        <tbody>
+                            <tr className={styles.tablehead}>
+                                <td width="200px">Player 1</td>
+                                <td width="200px">Player 2</td>
+                                <td width="200px">Player 3</td>
+                                <td width="200px">Player 4</td>
+                            </tr>
+                            <tr>
+                                {currentScore.map((m, index) => (<td className={styles.cell} key={index}>{m}</td>))}
+                            </tr>
+                        </tbody><br />
+                    </table>:"現在の得点をロード中..."}
 
                     <form>
                         <div className={styles.contents}>
-                        <div className={styles.biddings}>
-                                事業6：東海建設本社解体工事<br />
+
+                            <div className={styles.biddings}>
+                                事業6：東京スカイツリー解体工事<br />
                                 工事費：800億<br />
                                 入札経費：80億<br />
                                 あなたの入札額：{answer1}億円<br />
@@ -261,7 +311,7 @@ export default function SettingName() {
                                 工事4に入札しない
                             </div>
                             <div className={styles.biddings}>
-                                事業10：上野大仏建立<br />
+                                事業10：上野公園大仏建立<br />
                                 工事費：400億円<br />
                                 入札経費：40億円<br />
                                 あなたの入札額：{answer5}億円<br />

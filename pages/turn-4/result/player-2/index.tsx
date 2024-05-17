@@ -145,11 +145,11 @@ export default function Start() {
                     <table className={styles.table}>
                         <thead>
                             <tr className={styles.tablehead}><th></th>
-                                <th>工事1</th>
-                                <th>工事2</th>
-                                <th>工事3</th>
-                                <th>工事4</th>
-                                <th>工事5</th>
+                                <th>工事16</th>
+                                <th>工事17</th>
+                                <th>工事18</th>
+                                <th>工事19</th>
+                                <th>工事20</th>
                             </tr>
                         </thead>
                         <tbody>

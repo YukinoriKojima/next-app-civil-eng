@@ -139,17 +139,17 @@ export default function Start() {
                 </div> : ""}
                 <main className={styles.main}>
                     <div className={styles.pagetitlebox}>
-                        <h1>入札1~5<br />結果発表</h1>
+                        <h1>入札16~20<br />結果発表</h1>
                     </div>
 
                     <table className={styles.table}>
                         <thead>
                             <tr className={styles.tablehead}><th></th>
-                                <th>工事1</th>
-                                <th>工事2</th>
-                                <th>工事3</th>
-                                <th>工事4</th>
-                                <th>工事5</th>
+                                <th>工事16</th>
+                                <th>工事17</th>
+                                <th>工事18</th>
+                                <th>工事19</th>
+                                <th>工事20</th>
                             </tr>
                         </thead>
                         <tbody>

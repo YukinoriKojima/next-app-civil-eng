@@ -1,3 +1,7 @@
+google spreadsheet apiの準備が必要です
+auth部分はgitignoreしてるので詳細が知りたい方はご連絡ください
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
